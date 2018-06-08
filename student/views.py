@@ -18,6 +18,11 @@ from .models import Student
 def home(request):
 	return render(request,'base.html')
 
+#getting student details
+def student_detail(request,pk):
+    student = get_object_or_404(Student, pk=pk)
+    return render(request, 'student/student_detail.html', {'student': student})
+
 def home_sbadmin(request):
 	return render(request,'student/index.html')
 
