@@ -16,7 +16,7 @@ from django.db.models import Count, Sum, Q, Case, Value, When, IntegerField
 from .models import Student
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+#@login_required(login_url='/accounts/login/')
 def home(request):
 	return render(request,'base.html')
 
@@ -60,8 +60,9 @@ def student_edit(request,pk):
     
     return render(request, 'student/student_edit.html', {'form': form})
 
-def student_new(request):
 @login_required(login_url='/accounts/login/')
+def student_new(request):
+
     if request.method == "POST":
         form = StudentForm(request.POST)
         if form.is_valid():
@@ -76,7 +77,7 @@ def student_new(request):
     return render(request, 'student/student_new.html', {'form': form})
 
 
-
+#@login_required(login_url='/accounts/login/')
 def home_sbadmin(request):
 	return render(request,'student/index.html')
 
